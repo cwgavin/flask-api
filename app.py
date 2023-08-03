@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 import io
 from imageClassification import predict
 
@@ -14,7 +14,7 @@ def home():
 def image_classification():
     file = request.files["file"]
     fileBytes = io.BytesIO(file.read())
-    return predict(fileBytes, app.logger)
+    return jsonify({"preds": predict(fileBytes, app.logger)})
 
 
 if __name__ == "__main__":
