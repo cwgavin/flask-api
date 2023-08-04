@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "Flask API test 123"
+    return "Welcome to the home page!"
 
 
 @app.route("/test", methods=["GET", "POST"])
