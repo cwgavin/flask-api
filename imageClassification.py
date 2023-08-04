@@ -2,7 +2,6 @@ from io import BytesIO
 from logging import Logger
 import torch
 from torchvision import models
-from torchvision.models.resnet import ResNeXt50_32X4D_Weights
 from os import environ
 from os.path import dirname, abspath
 from PIL import Image
@@ -14,7 +13,9 @@ environ["TORCH_HOME"] = f"{ROOT_DIR}/models"
 
 
 def predict(imageBytes: BytesIO, logger: Logger):
-    resnet = models.resnext50_32x4d(weights=ResNeXt50_32X4D_Weights.DEFAULT)
+    resnet = models.resnext50_32x4d(
+        weights=models.resnet.ResNeXt50_32X4D_Weights.DEFAULT
+    )
     resnet.eval()
 
     # img = Image.open(f"{ROOT_DIR}/test_images/dumbbell.jpg")
